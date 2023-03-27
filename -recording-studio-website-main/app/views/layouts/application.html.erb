@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ROCK AND STONE!</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-dark flex-column flex-md-row bd-navbar sticky-top">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div><p class="alert alert-dark bg-dark text-warning font-weight-bold" >ROCK AND STONE 🤘</p></div>
+        <div><p class="text-dark">ffffff</p></div>           
+        <div class="btn-group mr-auto">
+    <!--  <li class="nav-item active">
+            <a class="nav-link text-white" href="/"><%= t('layouts.application.nav_1') %><span class="sr-only">(current)</span></a>
+          </li>   -->
+
+    <!--  <li class="nav-item active">
+            <a class="nav-link text-white" href="/tasks/index_subj"><%= t('.nav_2') %><span class="sr-only">(current)</span></a>
+          </li>   -->
+          <%= link_to "#{t('layouts.application.nav_1')}", tasks_path(@tasks), method: :get, class: 'btn btn-outline-dark text-black', style: 'background-color: #FBB103' %>
+          <%= link_to "#{t('.nav_2')}", tasks_index_subj_path(@tasks), method: :get, class: 'btn btn-outline-dark text-black', style: 'background-color: #FBB103' %>
+          <%= link_to "#{t('.nav_3')}", tasks_index_deadline_path(@tasks), method: :get, class: 'btn btn-outline-dark text-black', style: 'background-color: #FBB103' %>
+          <%= link_to "#{t('.nav_5')}", tasks_index_all_path(@tasks), method: :get, class: 'btn btn-outline-dark text-black', style: 'background-color: #FBB103' %>          
+          <% if user_signed_in?%>
+            <%= link_to "#{t('.nav_6')}", tasks_index_your_path(@tasks), method: :get, class: 'btn btn-outline-dark text-black', style: 'background-color: #FBB103' %>          
+          <%end%>
+          <% if user_signed_in? && current_user.admin? %>
+            <%= link_to "#{t('.nav_4')}", tasks_index_cleared_path(@tasks), method: :get, class: 'btn btn-outline-dark text-black', style: 'background-color: #FBB103' %>
+          <%end%>
+        </div>            
+        <span class="alert alert-warning text-dark mt bg-warning"><%= t('.today_date') %> <%= Date.today %></span>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('.lang') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'English',  {locale: :en}, class: "dropdown-item" %>
+            <%= link_to 'Русский',  {locale: :ru}, class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Others</a>
+          </div>
+        </div>
+        <div class="">
+          <% if !user_signed_in? %>
+            <%= link_to "#{t('.login')}",  new_user_session_path, class: "btn btn-outline-warning btn-sm" %>
+            <%= link_to "#{t('.sign_up')}", new_user_registration_path, class: "btn btn-outline-info btn-sm" %>
+          <% else %>
+            <%= link_to "#{t('.edit_user')}", edit_user_registration_path, class: "btn btn-outline-warning btn-sm" %>
+            <%= link_to "#{t('.sign_out')}",  destroy_user_session_path, method: :delete, class: "btn btn-outline-info btn-sm" %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- тут можно побаловаться с <div class="row"></div>   -->
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

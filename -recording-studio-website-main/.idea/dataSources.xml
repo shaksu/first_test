@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails final_work: development" uuid="72ea8cb7-cbdf-411f-96e5-87c69d37d2a4">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\matsv\RubymineProjects\final_work\db\development.sqlite3</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails final_work: test" uuid="28b72177-cba2-4bd5-b01e-61ea32e20543">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\matsv\RubymineProjects\final_work\db\test.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>

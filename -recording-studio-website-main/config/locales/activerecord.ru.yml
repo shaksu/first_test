@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      task: 'Задание'
+    attributes:
+      task:
+        Subject: "Группа"
+        Hometask: 'Песня'
+        Completed?: 'Выполнено?'
+        Deadline: 'Крайний срок'
+        Subj: 'Группа'
+      show:
+        Subj: 'Группа'

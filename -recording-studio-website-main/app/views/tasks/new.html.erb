@@ -1,0 +1,14 @@
+<div>
+<div class="col-md-7">
+  <h1 class="alert alert bg-warning text-dark mt-3"><%= t('.head') %></h1>
+</div>
+<% if user_signed_in? %>
+  <%= render 'form', task: @task %>
+<%else%>
+  <p class="alert alert bg-dark text-warning col-md-3"><%= "#{t('.login_to')}" %></p>
+<%end%>
+
+<div class="col-md-auto">
+<%= link_to "#{t('.back')}", tasks_path, class: "btn btn-outline-secondary btn-sm mb-3", style: "width: 618px" %>
+</div>
+</div>

@@ -1,0 +1,217 @@
+
+
+ru:
+  hello: "Привет, мир!"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Возникли ошибки: %{errors}'
+        restrict_dependent_destroy:
+          has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
+          has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+
+  tasks:
+    index:
+      head: 'Текущие заказы'
+      subj: 'Группа'
+      hometask: 'Песня'
+      deadline: 'Дедлайн'
+      actions: 'Действия'
+      completed: 'Готово?'
+      overdue: 'ПОТРАЧЕНО'
+      show: 'См.'
+      edit: 'Изм.'
+      delete: 'Удалить'
+      done: 'Да!'
+      not_done: 'Нет'
+      new_task: 'Новый заказ'
+      clear_all_done: 'Очистить'
+      login_to: 'Зарегистрируйтесь, чтобы воспользоваться всеми функциями'
+      not_your: "Не ваша задача"
+
+    index_deadline:
+      head: 'Ближайшие заказы'
+      subj: 'Группа'
+      hometask: 'Песня'
+      deadline: 'Осталось'
+      actions: 'Действия'
+      completed?: 'Готово?'
+      overdue:
+        one: ' день назад'
+        few: ' дня назад'
+        many: ' дней назад'
+        other: ' дней назад'
+      days:
+        one: ' день'
+        few: ' дня'
+        many: ' дней'
+        other: ' дней'
+
+      show: 'См.'
+      edit: 'Изм.'
+      delete: 'Удалить'
+      done: 'Да!'
+      not_done: 'Нет'
+      new_task: 'Новый заказ'
+      clear_all_done: 'Очистить'
+      login_to: 'Зарегистрируйтесь, чтобы воспользоваться всеми функциями'
+      not_your: "Не ваша задача"
+
+    index_subj:
+      head: 'Заказы по группам'
+      subj: 'Группа'
+      hometask: 'Песня'
+      deadline: 'Дедлайн'
+      actions: 'Действия'
+      completed?: 'Готово?'
+      overdue: ' д. назад'
+      days: ' д. осталось'
+      show: 'См.'
+      edit: 'Измен.'
+      delete: 'Удалить'
+      done: 'Да!'
+      not_done: 'Нет'
+      new_task: 'Новый заказ'
+      clear_all_done: 'Очистить'
+      login_to: 'Зарегистрируйтесь, чтобы воспользоваться всеми функциями'
+      empty: 'Список пуст'
+      not_your: "Не ваша задача"
+
+    index_cleared:
+      head: 'Архив завершенных'
+      subj: 'Группа'
+      hometask: 'Песня'
+      deadline: 'Дедлайн'
+      actions: 'Действия'
+      completed: 'Готово?'
+      overdue: 'ПОТРАЧЕНО'
+      show: 'См.'
+      edit: 'Изм.'
+      delete: 'Удалить'
+      done: 'Да!'
+      not_done: 'Нет'
+      new_task: 'Новый заказ'
+      clear_all_done: 'Очистить'
+      login_to: 'Зарегистрируйтесь, чтобы воспользоваться всеми функциями'
+      login_to_admin: 'Зарегистрируйтесь как адимнистратор, чтобы воспользоваться всеми функциями'
+      delete_all_done: 'Удалить все окончательно'
+      empty: 'Список пуст'
+      completed_at: 'Перемещено в корзину'
+      return: 'Вернуть'
+
+    index_all:
+      head: 'Все заказы'
+      subj: 'Группа'
+      hometask: 'Песня'
+      deadline: 'Дедлайн'
+      actions: 'Действия'
+      completed: 'Готово?'
+      overdue: 'ПОТРАЧЕНО'
+      show: 'См.'
+      edit: 'Изм.'
+      delete: 'Удалить'
+      done: 'Да!'
+      not_done: 'Нет'
+      new_task: 'Новый заказ'
+      clear_all_done: 'Очистить'
+      login_to: 'Зарегистрируйтесь, чтобы воспользоваться всеми функциями'
+      delete_all_done: 'Удалить все окончательно'
+      empty: 'Список пуст'
+      completed_at: 'Перемещено в корзину'
+      return: 'Вернуть'
+      added_at: 'Добавлено'
+      status?: 'Выполнено?'
+      hidden?: 'Скрыто?'
+      not_your: "Не ваша задача"
+
+    index_your:
+      head: 'Ваши заказы'
+      subj: 'Группа'
+      hometask: 'Песня'
+      deadline: 'Дедлайн'
+      actions: 'Действия'
+      completed: 'Готово?'
+      show: 'См.'
+      edit: 'Изм.'
+      delete: 'Удалить'
+      done: 'Да!'
+      not_done: 'Нет'
+      login_to: 'Зарегистрируйтесь, чтобы воспользоваться всеми функциями'
+      not_your: "Не ваша задача"
+      new_task: 'Новый заказ'
+
+    form:
+      submit: '%{action}'
+      create: 'Создать'
+      edit: 'Сохранить изменения'
+
+    show:
+      head: 'Просмотр заказа'
+      subj: 'Группа: '
+      descript: 'Песня: '
+      status: 'Статус: '
+      deadline: 'Крайний срок: '
+      hidden: 'Невидимка: '
+      email: 'E-mail пользователя: '
+      edit: 'Изменить'
+      back: 'Дом'
+
+    edit:
+      head: 'Редактирование'
+      show: 'Показать'
+      back: 'Дом'
+
+    new:
+      head: 'Новый заказ'
+      back: 'Дом'
+      login_to: 'Зарегистрируйтесь, чтобы воспользоваться всеми функциями'
+
+  date:
+    abbr_month_names:
+      -
+      - янв.
+      - февр.
+      - марта
+      - апр.
+      - мая
+      - июня
+      - июля
+      - авг.
+      - сент.
+      - окт.
+      - нояб.
+      - дек.
+    month_names:
+      -
+      - января
+      - февраля
+      - марта
+      - апреля
+      - мая
+      - июня
+      - июля
+      - августа
+      - сентября
+      - октября
+      - ноября
+      - декабря
+    order:
+      - :year
+      - :month
+      - :day
+
+  layouts:
+    application:
+      nav_1: 'Текущие'
+      nav_2: 'По группам'
+      nav_3: 'По срокам сдачи'
+      nav_4: 'Завершенные'
+      nav_5: 'Все'
+      nav_6: 'Ваши заказы'
+      today_date: 'Сегодня: '
+      lang: 'Язык'
+      login: 'Войти'
+      sign_up: 'Зарегистрироваться'
+      edit_user: 'Аккаунт'
+      sign_out: 'Выйти'

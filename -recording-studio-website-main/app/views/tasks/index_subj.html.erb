@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container row mt-4" style="top: 90px">
+  <h1 class="alert alert bg-warning text-dark col-md-7" style="height: 80px"> <%= t('tasks.index_subj.head') %></h1>
+  <% if user_signed_in? %>
+    <%= link_to "#{t('.new_task')}", new_task_path, class: 'btn btn-success btn-lg col-md-3 ml-4 text-lg-center', style: 'height: 80px; width: 310px' %>
+    <% activity_btn = '' %>
+  <% else %>
+    <p class="alert alert bg-dark text-warning col-md-10" ><b><%= t('.login_to') %></b></p>
+    <% activity_btn = 'disabled' %>
+  <% end %>
+</div>
+
+<table class="table table-hover mb-4 col-md-10">
+  <tbody>
+    <% num = 0 %>
+    <% subj = '' %>
+    <% @tasks.each do |task| %>
+
+      <% if (task.deadline - Date.today) <0 %>
+        <% color = '#000000' %>
+      <% else %>
+        <% if (task.deadline - Date.today) <=3  %>
+          <% color = '#b60800' %>
+        <% else %>
+          <% if (task.deadline - Date.today) <= 10 %>
+            <% color = '#ff842b' %>
+          <% else %>
+            <% color = '#00b200' %>
+          <% end %>
+        <% end %>
+      <% end %>
+          
+      <% num = 0 %>
+      <% subj = task.subj %>
+      <tr class="bg" style="top: 50px; background-color:rgba(200,160,0,0.11)">
+        <td colspan="7" class="alert-warning bg-warning text-dark text-center font-weight-bolder font-italic">
+          <%= subj  %>
+        </td>
+      </tr>
+
+      <% if task.status == false %>
+        <tr class="task">
+          <th scope="row"><p class="" style="color:<%= color %>"><%= num += 1%></p></th>
+          <td class="action text-center"><p class="" style="color:<%= color %>"><%= task.descript %></p></td>
+          <% if user_signed_in? && current_user.admin? %>
+            <td class="action text-center"><p class="" style="color:<%= color %>"><%= task.deadline %></p></td>
+          <%else%>
+            <td class="action text-center" colspan="2"><p class="" style="color:<%= color %>"><%= task.deadline %></p></td>
+          <%end%>
+          <td><%= link_to "#{t('.show')}", task, class: 'action btn btn-light btn-sm ml-3' %></td>
+          <% if user_signed_in? && current_user.admin? || user_signed_in? && task.user.email == current_user.email%>
+            <td><%= link_to "#{t('.edit')}", edit_task_path(task), class: "btn btn-outline-warning btn-sm #{activity_btn}" %></td>
+            <td><%= link_to "#{t('.delete')}", task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm #{activity_btn}" %></td>
+          <%else%>
+            <td colspan="2" class="text-center"><%= "#{t('.not_your')}" %></td>
+          <%end%>
+          <% if user_signed_in? && current_user.admin? %>
+            <td><%= link_to "#{t('.done')}", complete_in_subj_task_path(task), data: {method: :put}, class: "btn btn-outline-info btn-sm ml-4 #{activity_btn}" %></td>
+          <%end%>
+        </tr>
+      <% else %>
+        <tr class="task">
+          <th scope="row"><p style="color:#1f39fb"><%= num += 1%></p></th>
+          <td class="action text-center"><p style="color:#1f39fb"><s><%= task.descript %></s></p></td>
+          <% if user_signed_in? && current_user.admin? %>
+            <td class="action text-center"><p style="color:#1f39fb"><s><%= task.deadline %></s></p></td>
+          <%else%>
+            <td class="action text-center" colspan="2"><p style="color:#1f39fb"><s><%= task.deadline %></s></p></td>
+          <%end%>
+          <td><%= link_to "#{t('.show')}", task, class: 'action btn btn-light btn-sm ml-3' %></td>
+          <% if user_signed_in? && current_user.admin? || user_signed_in? && task.user.email == current_user.email%>
+            <td><%= link_to "#{t('.edit')}", edit_task_path(task), class: "btn btn-outline-warning btn-sm #{activity_btn}" %></td>
+            <td><%= link_to "#{t('.delete')}", task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm #{activity_btn}" %></td>
+          <%else%>
+            <td colspan="2" class="text-center"><%= "#{t('.not_your')}" %></td>
+          <%end%>
+          <% if user_signed_in? && current_user.admin? %>
+            <td><%= link_to "#{t('.not_done')}", uncomplete_in_subj_task_path(task), data: {method: :put}, class: "btn btn-outline-info btn-sm ml-4 #{activity_btn}" %></td>
+          <%end%>
+        </tr>
+      <% end %>
+
+    <% end %>
+  </tbody>
+</table>

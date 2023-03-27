@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1 class="alert alert bg-warning text-dark col-md-10"> <%= t('tasks.index_all.head') %> </h1>
+
+<% if user_signed_in?%>
+  <%= link_to "#{t('.new_task')}", new_task_path, class: 'btn btn-success btn-lg col-md-10 ml-10 mb-3 text-lg-center', style: 'height: 60px' %>
+  <% activity_btn = '' %>
+<% else %>
+  <p class="alert alert bg-dark text-warning mb-3 col-md-10"><b><%= t('.login_to') %></b></p>
+  <% activity_btn = 'disabled' %>
+<% end %>
+
+
+<table class="table table-striped mb-4 col-md-10">
+  <thead>
+  <tr style="background-color: rgba(255,192,45,1)">
+    <th class="text-center" scope="col">№</th>
+    <th class="text-center" scope="col">ID</th>
+    <th class="text-center" scope="col"><%= t('.subj') %></th>
+    <th class="text-center" scope="col"><%= t('.hometask') %></th>
+    <th class="text-center" scope="col"><%= t('.deadline') %></th>
+    <th class="text-center" scope="col"><%= t('.added_at') %></th>
+    <% if user_signed_in? && current_user.admin? %>
+      <th class="text-center" scope="col"><%= t('.status?') %></th>
+      <th class="text-center" scope="col"><%= t('.hidden?') %></th>
+    <% end %>
+    <th colspan="3" class="text-center" scope="col"><%= t('.actions') %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% num = 0 %>
+  <% @tasks.each do |task| %>
+    <tr class="task">
+      <th><%= num += 1%></th>
+      <td class="text-center"><%= task.id %></td>
+      <td class="text-center"><%= task.subj  %></td>
+      <td class="text-center"><p> <%= task.descript %></p></td>
+      <td class="text-center"><%= task.deadline %></td>
+      <td class="text-center"><%= task.created_at.in_time_zone('Moscow').strftime("%F_%T") %></td>
+      <% if user_signed_in? && current_user.admin? %>
+        <td class="text-center"><%= task.status %></td>
+        <td class="text-center"><%= task.hidden %></td>
+      <%end%>
+      <% if user_signed_in? && current_user.admin? || user_signed_in? && task.user.email == current_user.email%>
+        <td class="text-center"><%= link_to "#{t('.show')}", task, class: 'action btn btn-light btn-sm ml-4' %></td>
+        <td class="text-center"><%= link_to "#{t('.edit')}", edit_task_path(task), class: "btn btn-outline-warning btn-sm #{activity_btn}" %></td>
+        <td class="text-center"><%= link_to "#{t('.delete')}", task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm #{activity_btn}" %></td>
+      <% else %>
+        <td colspan="3" class="text-center"><%= "#{t('.not_your')}" %></td>
+      <%end%>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
